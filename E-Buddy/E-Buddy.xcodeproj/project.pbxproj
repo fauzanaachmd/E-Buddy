@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC10A02C2D16BDC700B0EB41 /* GoogleService-Info-Staging.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC10A0292D16BDC700B0EB41 /* GoogleService-Info-Staging.plist */; };
+		AC10A02D2D16BDC700B0EB41 /* GoogleService-Info-Dev.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC10A02A2D16BDC700B0EB41 /* GoogleService-Info-Dev.plist */; };
+		AC10A02E2D16BDC800B0EB41 /* GoogleService-Info-Prod.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC10A02B2D16BDC700B0EB41 /* GoogleService-Info-Prod.plist */; };
 		ACA52FB32D1452B0008CB457 /* E_BuddyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA52FB22D1452B0008CB457 /* E_BuddyApp.swift */; };
 		ACA52FB52D1452B0008CB457 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA52FB42D1452B0008CB457 /* ContentView.swift */; };
 		ACA52FB72D1452B0008CB457 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACA52FB62D1452B0008CB457 /* Assets.xcassets */; };
 		ACA52FBA2D1452B0008CB457 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACA52FB92D1452B0008CB457 /* Preview Assets.xcassets */; };
-		ACA52FC12D145821008CB457 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ACA52FC02D145821008CB457 /* GoogleService-Info.plist */; };
 		ACA52FC52D145A15008CB457 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = ACA52FC42D145A15008CB457 /* FirebaseAnalytics */; };
 		ACA52FC72D145A15008CB457 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = ACA52FC62D145A15008CB457 /* FirebaseAuth */; };
 		ACA52FC92D145A15008CB457 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = ACA52FC82D145A15008CB457 /* FirebaseFirestore */; };
@@ -20,12 +22,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AC10A0292D16BDC700B0EB41 /* GoogleService-Info-Staging.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Staging.plist"; sourceTree = "<group>"; };
+		AC10A02A2D16BDC700B0EB41 /* GoogleService-Info-Dev.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Dev.plist"; sourceTree = "<group>"; };
+		AC10A02B2D16BDC700B0EB41 /* GoogleService-Info-Prod.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Prod.plist"; sourceTree = "<group>"; };
 		ACA52FAF2D1452B0008CB457 /* E-Buddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "E-Buddy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACA52FB22D1452B0008CB457 /* E_BuddyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = E_BuddyApp.swift; sourceTree = "<group>"; };
 		ACA52FB42D1452B0008CB457 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		ACA52FB62D1452B0008CB457 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ACA52FB92D1452B0008CB457 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		ACA52FC02D145821008CB457 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +48,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AC109FF02D166DBD00B0EB41 /* Plist */ = {
+			isa = PBXGroup;
+			children = (
+				AC10A02A2D16BDC700B0EB41 /* GoogleService-Info-Dev.plist */,
+				AC10A02B2D16BDC700B0EB41 /* GoogleService-Info-Prod.plist */,
+				AC10A0292D16BDC700B0EB41 /* GoogleService-Info-Staging.plist */,
+			);
+			path = Plist;
+			sourceTree = "<group>";
+		};
 		ACA52FA62D1452B0008CB457 = {
 			isa = PBXGroup;
 			children = (
@@ -82,7 +96,7 @@
 		ACA52FC22D145833008CB457 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				ACA52FC02D145821008CB457 /* GoogleService-Info.plist */,
+				AC109FF02D166DBD00B0EB41 /* Plist */,
 				ACA52FB62D1452B0008CB457 /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -95,6 +109,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = ACA52FBD2D1452B0008CB457 /* Build configuration list for PBXNativeTarget "E-Buddy" */;
 			buildPhases = (
+				AC10A0222D16B07000B0EB41 /* Firebase Config */,
 				ACA52FAB2D1452B0008CB457 /* Sources */,
 				ACA52FAC2D1452B0008CB457 /* Frameworks */,
 				ACA52FAD2D1452B0008CB457 /* Resources */,
@@ -158,12 +173,36 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACA52FBA2D1452B0008CB457 /* Preview Assets.xcassets in Resources */,
+				AC10A02E2D16BDC800B0EB41 /* GoogleService-Info-Prod.plist in Resources */,
+				AC10A02D2D16BDC700B0EB41 /* GoogleService-Info-Dev.plist in Resources */,
+				AC10A02C2D16BDC700B0EB41 /* GoogleService-Info-Staging.plist in Resources */,
 				ACA52FB72D1452B0008CB457 /* Assets.xcassets in Resources */,
-				ACA52FC12D145821008CB457 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		AC10A0222D16B07000B0EB41 /* Firebase Config */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Firebase Config";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cp \"${SRCROOT}/E-Buddy/Resources/Plist/${GOOGLE_SERVICE_INFO}\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		ACA52FAB2D1452B0008CB457 /* Sources */ = {
@@ -178,7 +217,7 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		ACA52FBB2D1452B0008CB457 /* Debug */ = {
+		AC10A0202D16AC8D00B0EB41 /* Staging */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -239,7 +278,101 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
-			name = Debug;
+			name = Staging;
+		};
+		AC10A0212D16AC8D00B0EB41 /* Staging */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"E-Buddy/Preview Content\"";
+				DEVELOPMENT_TEAM = 97S4GYBKWY;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				GOOGLE_SERVICE_INFO = "GoogleService-Info-Staging.plist";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "fauzan.E-Buddy";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Staging;
+		};
+		ACA52FBB2D1452B0008CB457 /* Dev */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Dev;
 		};
 		ACA52FBC2D1452B0008CB457 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -297,7 +430,7 @@
 			};
 			name = Release;
 		};
-		ACA52FBE2D1452B0008CB457 /* Debug */ = {
+		ACA52FBE2D1452B0008CB457 /* Dev */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -307,7 +440,9 @@
 				DEVELOPMENT_ASSET_PATHS = "\"E-Buddy/Preview Content\"";
 				DEVELOPMENT_TEAM = 97S4GYBKWY;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				GOOGLE_SERVICE_INFO = "GoogleService-Info-Dev.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -324,7 +459,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
-			name = Debug;
+			name = Dev;
 		};
 		ACA52FBF2D1452B0008CB457 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -336,7 +471,9 @@
 				DEVELOPMENT_ASSET_PATHS = "\"E-Buddy/Preview Content\"";
 				DEVELOPMENT_TEAM = 97S4GYBKWY;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				GOOGLE_SERVICE_INFO = "GoogleService-Info-Prod.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -361,7 +498,8 @@
 		ACA52FAA2D1452B0008CB457 /* Build configuration list for PBXProject "E-Buddy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				ACA52FBB2D1452B0008CB457 /* Debug */,
+				ACA52FBB2D1452B0008CB457 /* Dev */,
+				AC10A0202D16AC8D00B0EB41 /* Staging */,
 				ACA52FBC2D1452B0008CB457 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -370,7 +508,8 @@
 		ACA52FBD2D1452B0008CB457 /* Build configuration list for PBXNativeTarget "E-Buddy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				ACA52FBE2D1452B0008CB457 /* Debug */,
+				ACA52FBE2D1452B0008CB457 /* Dev */,
+				AC10A0212D16AC8D00B0EB41 /* Staging */,
 				ACA52FBF2D1452B0008CB457 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;

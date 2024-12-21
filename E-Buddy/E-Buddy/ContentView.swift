@@ -16,6 +16,11 @@ struct ContentView: View {
             Text("Hello, world!")
         }
         .padding()
+        .onAppear {
+            if let path = Bundle.main.path(forResource: "GoogleService-Info", ofType: "plist") {
+                print("Firebase Config: \(path)")
+            }
+        }
     }
 }
 
