@@ -15,7 +15,7 @@ final class ProfileViewModel: ObservableObject {
             isLoading = users == .loading
         }
     }
-    @Published var uploadAvatar: DataState<Bool> = .initiate {
+    @Published var uploadAvatar: DataState<String> = .initiate {
         didSet {
             isLoading = uploadAvatar == .loading
         }
@@ -66,10 +66,22 @@ final class ProfileViewModel: ObservableObject {
                 case .finished:
                     break
                 }
-            } receiveValue: { [weak self] uploadAvatarResponse in
-                guard let self else { return }
-                requestUsers()
-                self.uploadAvatar = .success(data: uploadAvatarResponse)
+            } receiveValue: { [weak self] uploadedAvatarResponse in
+                guard let self, !uploadedAvatarResponse.isEmpty else {
+                    self?.uploadAvatar = .initiate
+                    return
+                }
+                let updatedUser = self.users.value?.map({ user in
+                    if user.uid == self.selectedUserId {
+                        return User(uid: user.uid, email: user.email, phoneNumber: user.phoneNumber, gender: user.gender, avatar: uploadedAvatarResponse)
+                    }
+                    return user
+                })
+
+                if let users = updatedUser {
+                    self.users = .success(data: users)
+                }
+                self.uploadAvatar = .success(data: uploadedAvatarResponse)
             }
             .store(in: &cancelables)
     }

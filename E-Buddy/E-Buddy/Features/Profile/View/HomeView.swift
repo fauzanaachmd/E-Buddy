@@ -26,32 +26,10 @@ struct HomeView: View {
                         VStack {
                             ForEach(users.indices, id: \.self) { index in
                                 let user = users[safe: index]
-                                VStack {
-                                    Text("UID: \(user?.uid ?? "")")
-                                    Text("Email: \(user?.email ?? "")")
-                                    Text("Gender: \(user?.genderDescription ?? "")")
-                                    Text("Phone Number: \(user?.phoneNumber ?? "")")
-
-                                    if let avatarUrlString = user?.avatar, !avatarUrlString.isEmpty {
-                                        AsyncImage(url: URL(string: avatarUrlString)) { image in
-                                            image.resizable()
-                                        } placeholder: {
-                                            Color.gray
-                                        }
-                                        .frame(width: 128, height: 128)
-                                        .clipShape(.rect(cornerRadius: 25))
-                                    }
-
-                                    Button(action: {
-                                        if let userId = user?.uid {
-                                            viewModel.selectedUserId = userId
-                                            isShowingCamera = true
-                                        }
-                                    }, label: {
-                                        Text("Upload Avatar")
-                                    })
+                                if let user {
+                                    UserList(isShowingCamera: $isShowingCamera, user: user)
+                                        .environmentObject(viewModel)
                                 }
-                                Divider()
                             }
                         }
                     }
@@ -76,6 +54,38 @@ struct HomeView: View {
                 viewModel.requestUploadAvatar(image: theImage)
             }
         }
+    }
+}
+
+struct UserList: View {
+    @EnvironmentObject var viewModel: ProfileViewModel
+    @Binding var isShowingCamera: Bool
+    let user: User
+    var body: some View {
+        VStack {
+            Text("UID: \(user.uid)")
+            Text("Email: \(user.email)")
+            Text("Gender: \(user.genderDescription)")
+            Text("Phone Number: \(user.phoneNumber)")
+
+            if !user.avatar.isEmpty {
+                AsyncImage(url: URL(string: user.avatar)) { image in
+                    image.resizable()
+                } placeholder: {
+                    Color.gray
+                }
+                .frame(width: 128, height: 128)
+                .clipShape(.rect(cornerRadius: 25))
+            }
+
+            Button(action: {
+                viewModel.selectedUserId = user.uid
+                isShowingCamera = true
+            }, label: {
+                Text("Upload Avatar")
+            })
+        }
+        Divider()
     }
 }
 

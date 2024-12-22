@@ -45,9 +45,9 @@ struct DBPLoadingModifier: ViewModifier {
             ProgressView()
                 .opacity(isIndicatorShown ? 1 : 0)
         }
-        .onChange(of: isLoading) { _ in
+        .onChange(of: isLoading, {
             isIndicatorShown.toggle()
-        }
+        })
     }
 }
 

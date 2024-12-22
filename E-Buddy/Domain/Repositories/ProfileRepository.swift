@@ -10,5 +10,5 @@ import UIKit
 
 protocol ProfileRepository {
     func getUsers() -> AnyPublisher<[User], Error>
-    func uploadAvatar(userId: String, image: UIImage) -> AnyPublisher<Bool, Error>
+    func uploadAvatar(userId: String, image: UIImage) -> AnyPublisher<String, Error>
 }

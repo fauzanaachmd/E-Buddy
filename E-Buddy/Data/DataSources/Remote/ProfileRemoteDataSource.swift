@@ -12,7 +12,7 @@ import Foundation
 
 protocol ProfileRemoteDataSource {
     func getUsers() -> AnyPublisher<[User], Error>
-    func uploadAvatar(userId: String, image: UIImage) -> AnyPublisher<Bool, Error>
+    func uploadAvatar(userId: String, image: UIImage) -> AnyPublisher<String, Error>
 }
 
 struct DefaultProfileRemoteDataSource: ProfileRemoteDataSource {
@@ -51,55 +51,54 @@ struct DefaultProfileRemoteDataSource: ProfileRemoteDataSource {
         .eraseToAnyPublisher()
     }
 
-    func uploadAvatar(userId: String, image: UIImage) -> AnyPublisher<Bool, any Error> {
-        guard let imageData = image.jpegData(compressionQuality: 0.8) else {
-            print("Failed to convert image to data.")
-            return Just(false).setFailureType(to: Error.self).eraseToAnyPublisher()
-        }
-
-        // Start a background task
-        var backgroundTask: UIBackgroundTaskIdentifier = .invalid
-        backgroundTask = UIApplication.shared.beginBackgroundTask {
-            // End the background task if the system requires it
-            UIApplication.shared.endBackgroundTask(backgroundTask)
-            backgroundTask = .invalid
-        }
-
-        let storage = Storage.storage()
-        let storageRef = storage.reference()
-        let imageRef = storageRef.child("images/\(UUID().uuidString).jpg") // Unique filename
-        var successUpload = false
-
-        let metadata = StorageMetadata()
-        metadata.contentType = "image/jpeg"
-
-        imageRef.putData(imageData, metadata: metadata) { metadata, error in
-            if let error = error {
-                print("Log Error: \(error)")
-                UIApplication.shared.endBackgroundTask(backgroundTask) // End the task
+    func uploadAvatar(userId: String, image: UIImage) -> AnyPublisher<String, Error> {
+        Future { promise in
+            var successUploadUrl = ""
+            guard let imageData = image.jpegData(compressionQuality: 0.8) else {
+                print("Failed to convert image to data.")
                 return
             }
 
-            // Get the download URL
-            imageRef.downloadURL { url, error in
+            // Start a background task
+            var backgroundTask: UIBackgroundTaskIdentifier = .invalid
+            backgroundTask = UIApplication.shared.beginBackgroundTask {
+                // End the background task if the system requires it
+                UIApplication.shared.endBackgroundTask(backgroundTask)
+                backgroundTask = .invalid
+            }
+
+            let storage = Storage.storage()
+            let storageRef = storage.reference()
+            let imageRef = storageRef.child("images/\(UUID().uuidString).jpg") // Unique filename
+
+            let metadata = StorageMetadata()
+            metadata.contentType = "image/jpeg"
+
+            imageRef.putData(imageData, metadata: metadata) { metadata, error in
                 if let error = error {
-                    successUpload = false
-                    print("Log Error: \(error)")
-                } else if let url = url {
-                    db.collection("USERS").document(userId).updateData(["avatar": url.absoluteString]) { error in
-                        if let error = error {
-                            successUpload = false
-                            print("Log Error: \(error)")
-                        } else {
-                            print("Log Info: \(url)")
-                            successUpload = true
-                        }
-                    }
+                    UIApplication.shared.endBackgroundTask(backgroundTask) // End the task
+                    return promise(.failure(error))
                 }
-                UIApplication.shared.endBackgroundTask(backgroundTask) // End the task
+
+                // Get the download URL
+                imageRef.downloadURL { url, error in
+                    if let error = error {
+                        successUploadUrl = ""
+                        print("Log Error: \(error)")
+                    } else if let url = url {
+                        successUploadUrl = url.absoluteString
+                        db.collection("USERS").document(userId).updateData(["avatar": url.absoluteString]) { error in
+                            if let error = error {
+                                successUploadUrl = ""
+                                print("Log Error: \(error)")
+                            }
+                        }
+                        promise(.success(successUploadUrl))
+                    }
+                    UIApplication.shared.endBackgroundTask(backgroundTask) // End the task
+                }
             }
         }
-
-        return Just(successUpload).setFailureType(to: Error.self).eraseToAnyPublisher()
+        .eraseToAnyPublisher()
     }
 }

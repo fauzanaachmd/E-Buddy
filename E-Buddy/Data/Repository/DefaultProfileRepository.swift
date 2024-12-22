@@ -19,7 +19,7 @@ struct DefaultProfileRepository: ProfileRepository {
         remoteDataSource.getUsers()
     }
 
-    func uploadAvatar(userId: String, image: UIImage) -> AnyPublisher<Bool, Error> {
+    func uploadAvatar(userId: String, image: UIImage) -> AnyPublisher<String, Error> {
         remoteDataSource.uploadAvatar(userId: userId, image: image)
     }
 }
