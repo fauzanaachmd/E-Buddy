@@ -20,6 +20,7 @@ protocol ProfileAssembler {
     func remoteDataSource() -> ProfileRemoteDataSource
 
     func useCase() -> GetUsersUseCase
+    func useCase() -> UploadAvatarUseCase
 }
 
 extension ProfileAssembler where Self: Assembler {
@@ -36,7 +37,7 @@ extension ProfileAssembler where Self: Assembler {
     }
 
     func viewModel() -> ProfileViewModel {
-        ProfileViewModel(getUsersUseCase: useCase())
+        ProfileViewModel(getUsersUseCase: useCase(), uploadAvatarUseCase: useCase())
     }
 
     func repository() -> ProfileRepository {
@@ -49,5 +50,9 @@ extension ProfileAssembler where Self: Assembler {
 
     func useCase() -> GetUsersUseCase {
         DefaultGetUserUseCase(repository: repository())
+    }
+
+    func useCase() -> UploadAvatarUseCase {
+        DefaultUploadAvatarUseCase(repository: repository())
     }
 }

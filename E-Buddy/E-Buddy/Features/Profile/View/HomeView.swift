@@ -10,6 +10,8 @@ import SwiftUI
 struct HomeView: View {
     private let navigator: ProfileNavigator
     @StateObject var viewModel: ProfileViewModel
+    @State private var image: UIImage?
+    @State private var isShowingCamera = false
 
     init(navigator: ProfileNavigator, viewModel: ProfileViewModel) {
         self.navigator = navigator
@@ -25,9 +27,15 @@ struct HomeView: View {
                             ForEach(users.indices, id: \.self) { index in
                                 let user = users[safe: index]
                                 VStack {
+                                    Text("UID: \(user?.uid ?? "")")
                                     Text("Email: \(user?.email ?? "")")
                                     Text("Gender: \(user?.genderDescription ?? "")")
                                     Text("Phone Number: \(user?.phoneNumber ?? "")")
+                                    Button(action: {
+                                        isShowingCamera = true
+                                    }, label: {
+                                        Text("Upload Avatar")
+                                    })
                                 }
                                 Divider()
                             }
@@ -49,6 +57,14 @@ struct HomeView: View {
         }
         .onChange(dataState: viewModel.$users)
         .showLoading(isShowing: .constant(viewModel.isLoading))
+        .sheet(isPresented: $isShowingCamera) {
+            CameraPhotoPicker(image: $image)
+        }
+        .onChange(of: image) { oldValue, newValue in
+            if let theImage = newValue {
+                viewModel.requestUploadAvatar(image: theImage)
+            }
+        }
     }
 }
 

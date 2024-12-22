@@ -6,7 +6,7 @@
 //
 
 import Combine
-import Foundation
+import UIKit
 
 struct DefaultProfileRepository: ProfileRepository {
     private let remoteDataSource: ProfileRemoteDataSource
@@ -17,5 +17,9 @@ struct DefaultProfileRepository: ProfileRepository {
 
     func getUsers() -> AnyPublisher<[User], Error> {
         remoteDataSource.getUsers()
+    }
+
+    func uploadAvatar(image: UIImage) -> AnyPublisher<Bool, Error> {
+        remoteDataSource.uploadAvatar(image: image)
     }
 }

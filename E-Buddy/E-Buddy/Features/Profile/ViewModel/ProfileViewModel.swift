@@ -7,6 +7,7 @@
 
 import Combine
 import Foundation
+import UIKit
 
 final class ProfileViewModel: ObservableObject {
     @Published var users: DataState<[User]> = .initiate {
@@ -14,13 +15,23 @@ final class ProfileViewModel: ObservableObject {
             isLoading = users == .loading
         }
     }
+    @Published var uploadAvatar: DataState<Bool> = .initiate {
+        didSet {
+            isLoading = uploadAvatar == .loading
+        }
+    }
     @Published var isLoading: Bool = false
     internal var cancelables: Set<AnyCancellable> = []
 
     private let getUsersUseCase: GetUsersUseCase
+    private let uploadAvatarUseCase: UploadAvatarUseCase
 
-    init(getUsersUseCase: GetUsersUseCase) {
+    init(
+        getUsersUseCase: GetUsersUseCase,
+        uploadAvatarUseCase: UploadAvatarUseCase
+    ) {
         self.getUsersUseCase = getUsersUseCase
+        self.uploadAvatarUseCase = uploadAvatarUseCase
     }
 
     func requestUsers() {
@@ -40,6 +51,24 @@ final class ProfileViewModel: ObservableObject {
                 self.users = .success(data: users)
             }
             .store(in: &cancelables)
+    }
 
+    func requestUploadAvatar(image: UIImage) {
+        uploadAvatar = .loading
+
+        uploadAvatarUseCase.execute(image: image)
+            .sink { [weak self] completion in
+                guard let self else { return }
+                switch completion {
+                case .failure(let error):
+                    self.uploadAvatar = .failed(reason: error)
+                case .finished:
+                    break
+                }
+            } receiveValue: { [weak self] uploadAvatarResponse in
+                guard let self else { return }
+                self.uploadAvatar = .success(data: uploadAvatarResponse)
+            }
+            .store(in: &cancelables)
     }
 }
