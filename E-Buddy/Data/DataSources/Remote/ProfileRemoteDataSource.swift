@@ -12,14 +12,15 @@ import Foundation
 
 protocol ProfileRemoteDataSource {
     func getUsers() -> AnyPublisher<[User], Error>
-    func uploadAvatar(image: UIImage) -> AnyPublisher<Bool, Error>
+    func uploadAvatar(userId: String, image: UIImage) -> AnyPublisher<Bool, Error>
 }
 
 struct DefaultProfileRemoteDataSource: ProfileRemoteDataSource {
+    let db = Firestore.firestore()
+
     func getUsers() -> AnyPublisher<[User], Error> {
         Future { promise in
             // Initialize Firestore
-            let db = Firestore.firestore()
             let usersCollectionRef = db.collection("USERS")
 
             // Fetch all documents in the collection
@@ -37,7 +38,8 @@ struct DefaultProfileRemoteDataSource: ProfileRemoteDataSource {
                             let userPhone = document.get("phoneNumber") as? String ?? ""
                             let userEmail = document.get("email") as? String ?? ""
                             let userGender = document.get("gender") as? Int ?? 0
-                            return User(uid: userId, email: userEmail, phoneNumber: userPhone, gender: userGender)
+                            let userAvatar = document.get("avatar") as? String ?? ""
+                            return User(uid: userId, email: userEmail, phoneNumber: userPhone, gender: userGender, avatar: userAvatar)
                         }
                     }
 
@@ -49,7 +51,7 @@ struct DefaultProfileRemoteDataSource: ProfileRemoteDataSource {
         .eraseToAnyPublisher()
     }
 
-    func uploadAvatar(image: UIImage) -> AnyPublisher<Bool, any Error> {
+    func uploadAvatar(userId: String, image: UIImage) -> AnyPublisher<Bool, any Error> {
         guard let imageData = image.jpegData(compressionQuality: 0.8) else {
             print("Failed to convert image to data.")
             return Just(false).setFailureType(to: Error.self).eraseToAnyPublisher()
@@ -84,9 +86,15 @@ struct DefaultProfileRemoteDataSource: ProfileRemoteDataSource {
                     successUpload = false
                     print("Log Error: \(error)")
                 } else if let url = url {
-                    //                        completion(.success(url.absoluteString)) // Pass the URL back
-                    print("Log Info: \(url)")
-                    successUpload = true
+                    db.collection("USERS").document(userId).updateData(["avatar": url.absoluteString]) { error in
+                        if let error = error {
+                            successUpload = false
+                            print("Log Error: \(error)")
+                        } else {
+                            print("Log Info: \(url)")
+                            successUpload = true
+                        }
+                    }
                 }
                 UIApplication.shared.endBackgroundTask(backgroundTask) // End the task
             }

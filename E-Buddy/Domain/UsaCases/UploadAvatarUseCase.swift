@@ -9,7 +9,7 @@ import Combine
 import UIKit
 
 protocol UploadAvatarUseCase {
-    func execute(image: UIImage) -> AnyPublisher<Bool, Error>
+    func execute(userId: String, image: UIImage) -> AnyPublisher<Bool, Error>
 }
 
 struct DefaultUploadAvatarUseCase: UploadAvatarUseCase {
@@ -19,7 +19,7 @@ struct DefaultUploadAvatarUseCase: UploadAvatarUseCase {
         self.repository = repository
     }
 
-    func execute(image: UIImage) -> AnyPublisher<Bool, Error> {
-        repository.uploadAvatar(image: image)
+    func execute(userId: String, image: UIImage) -> AnyPublisher<Bool, Error> {
+        repository.uploadAvatar(userId: userId, image: image)
     }
 }

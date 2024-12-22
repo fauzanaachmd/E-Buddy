@@ -21,6 +21,7 @@ final class ProfileViewModel: ObservableObject {
         }
     }
     @Published var isLoading: Bool = false
+    var selectedUserId: String = ""
     internal var cancelables: Set<AnyCancellable> = []
 
     private let getUsersUseCase: GetUsersUseCase
@@ -56,7 +57,7 @@ final class ProfileViewModel: ObservableObject {
     func requestUploadAvatar(image: UIImage) {
         uploadAvatar = .loading
 
-        uploadAvatarUseCase.execute(image: image)
+        uploadAvatarUseCase.execute(userId: selectedUserId, image: image)
             .sink { [weak self] completion in
                 guard let self else { return }
                 switch completion {
@@ -67,6 +68,7 @@ final class ProfileViewModel: ObservableObject {
                 }
             } receiveValue: { [weak self] uploadAvatarResponse in
                 guard let self else { return }
+                requestUsers()
                 self.uploadAvatar = .success(data: uploadAvatarResponse)
             }
             .store(in: &cancelables)

@@ -31,8 +31,22 @@ struct HomeView: View {
                                     Text("Email: \(user?.email ?? "")")
                                     Text("Gender: \(user?.genderDescription ?? "")")
                                     Text("Phone Number: \(user?.phoneNumber ?? "")")
+
+                                    if let avatarUrlString = user?.avatar, !avatarUrlString.isEmpty {
+                                        AsyncImage(url: URL(string: avatarUrlString)) { image in
+                                            image.resizable()
+                                        } placeholder: {
+                                            Color.gray
+                                        }
+                                        .frame(width: 128, height: 128)
+                                        .clipShape(.rect(cornerRadius: 25))
+                                    }
+
                                     Button(action: {
-                                        isShowingCamera = true
+                                        if let userId = user?.uid {
+                                            viewModel.selectedUserId = userId
+                                            isShowingCamera = true
+                                        }
                                     }, label: {
                                         Text("Upload Avatar")
                                     })
@@ -50,9 +64,6 @@ struct HomeView: View {
             .padding()
         }
         .onAppear {
-            if let path = Bundle.main.path(forResource: "GoogleService-Info", ofType: "plist") {
-                print("Firebase Config: \(path)")
-            }
             viewModel.requestUsers()
         }
         .onChange(dataState: viewModel.$users)

@@ -12,6 +12,7 @@ struct User: Codable {
     var email: String
     var phoneNumber: String
     var gender: Int
+    var avatar: String
 
     var genderEnum: GenderEnum? {
         guard let theGender = GenderEnum(rawValue: gender) else {
