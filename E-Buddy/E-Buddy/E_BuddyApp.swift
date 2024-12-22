@@ -10,6 +10,7 @@ import netfox
 import SwiftUI
 
 class AppDelegate: NSObject, UIApplicationDelegate {
+    private let assembler = AppAssembler()
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         FirebaseApp.configure()
@@ -22,10 +23,15 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 @main
 struct E_BuddyApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    
+    private let navigator: ProfileNavigator
+
+    init() {
+        self.navigator = AppAssembler().navigator()
+    }
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            navigator.navigateToHome()
         }
     }
 }

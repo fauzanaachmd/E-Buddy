@@ -10,8 +10,12 @@
 		AC10A02C2D16BDC700B0EB41 /* GoogleService-Info-Staging.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC10A0292D16BDC700B0EB41 /* GoogleService-Info-Staging.plist */; };
 		AC10A02D2D16BDC700B0EB41 /* GoogleService-Info-Dev.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC10A02A2D16BDC700B0EB41 /* GoogleService-Info-Dev.plist */; };
 		AC10A02E2D16BDC800B0EB41 /* GoogleService-Info-Prod.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC10A02B2D16BDC700B0EB41 /* GoogleService-Info-Prod.plist */; };
+		AC10A0372D1715CD00B0EB41 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC10A0362D1715CD00B0EB41 /* ProfileView.swift */; };
+		AC10A0402D17180100B0EB41 /* GenderEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC10A03F2D17180100B0EB41 /* GenderEnum.swift */; };
+		AC10A0422D17181800B0EB41 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC10A0412D17181800B0EB41 /* User.swift */; };
+		AC10A0452D171DB300B0EB41 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC10A0442D171DB300B0EB41 /* ProfileViewModel.swift */; };
 		ACA52FB32D1452B0008CB457 /* E_BuddyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA52FB22D1452B0008CB457 /* E_BuddyApp.swift */; };
-		ACA52FB52D1452B0008CB457 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA52FB42D1452B0008CB457 /* ContentView.swift */; };
+		ACA52FB52D1452B0008CB457 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA52FB42D1452B0008CB457 /* HomeView.swift */; };
 		ACA52FB72D1452B0008CB457 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACA52FB62D1452B0008CB457 /* Assets.xcassets */; };
 		ACA52FBA2D1452B0008CB457 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACA52FB92D1452B0008CB457 /* Preview Assets.xcassets */; };
 		ACA52FC52D145A15008CB457 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = ACA52FC42D145A15008CB457 /* FirebaseAnalytics */; };
@@ -19,17 +23,41 @@
 		ACA52FC92D145A15008CB457 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = ACA52FC82D145A15008CB457 /* FirebaseFirestore */; };
 		ACA52FCB2D145A15008CB457 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = ACA52FCA2D145A15008CB457 /* FirebaseStorage */; };
 		ACA52FCE2D145C8F008CB457 /* netfox in Frameworks */ = {isa = PBXBuildFile; productRef = ACA52FCD2D145C8F008CB457 /* netfox */; };
+		ACAFA75D2D17CF2500325B02 /* ModuleAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAFA75C2D17CF2500325B02 /* ModuleAssembler.swift */; };
+		ACAFA75F2D17CFF700325B02 /* ProfileAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAFA75E2D17CFF700325B02 /* ProfileAssembler.swift */; };
+		ACAFA7622D17D36600325B02 /* ProfileNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAFA7612D17D36600325B02 /* ProfileNavigator.swift */; };
+		ACAFA7642D17E7B900325B02 /* ProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAFA7632D17E7B900325B02 /* ProfileRepository.swift */; };
+		ACAFA7662D17E8DE00325B02 /* GetUsersUsaCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAFA7652D17E8DE00325B02 /* GetUsersUsaCase.swift */; };
+		ACAFA7682D17EA2200325B02 /* DefaultProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAFA7672D17EA2200325B02 /* DefaultProfileRepository.swift */; };
+		ACAFA76A2D17EA7500325B02 /* ProfileRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAFA7692D17EA7500325B02 /* ProfileRemoteDataSource.swift */; };
+		ACAFA76C2D17F26D00325B02 /* DataState.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAFA76B2D17F26D00325B02 /* DataState.swift */; };
+		ACAFA76F2D17FCCE00325B02 /* View+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAFA76E2D17FCCE00325B02 /* View+Ext.swift */; };
+		ACAFA7712D17FE2700325B02 /* Collection+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAFA7702D17FE2700325B02 /* Collection+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		AC10A0292D16BDC700B0EB41 /* GoogleService-Info-Staging.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Staging.plist"; sourceTree = "<group>"; };
 		AC10A02A2D16BDC700B0EB41 /* GoogleService-Info-Dev.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Dev.plist"; sourceTree = "<group>"; };
 		AC10A02B2D16BDC700B0EB41 /* GoogleService-Info-Prod.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Prod.plist"; sourceTree = "<group>"; };
+		AC10A0362D1715CD00B0EB41 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		AC10A03F2D17180100B0EB41 /* GenderEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderEnum.swift; sourceTree = "<group>"; };
+		AC10A0412D17181800B0EB41 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		AC10A0442D171DB300B0EB41 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		ACA52FAF2D1452B0008CB457 /* E-Buddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "E-Buddy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACA52FB22D1452B0008CB457 /* E_BuddyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = E_BuddyApp.swift; sourceTree = "<group>"; };
-		ACA52FB42D1452B0008CB457 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		ACA52FB42D1452B0008CB457 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		ACA52FB62D1452B0008CB457 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ACA52FB92D1452B0008CB457 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		ACAFA75C2D17CF2500325B02 /* ModuleAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleAssembler.swift; sourceTree = "<group>"; };
+		ACAFA75E2D17CFF700325B02 /* ProfileAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAssembler.swift; sourceTree = "<group>"; };
+		ACAFA7612D17D36600325B02 /* ProfileNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileNavigator.swift; sourceTree = "<group>"; };
+		ACAFA7632D17E7B900325B02 /* ProfileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRepository.swift; sourceTree = "<group>"; };
+		ACAFA7652D17E8DE00325B02 /* GetUsersUsaCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUsersUsaCase.swift; sourceTree = "<group>"; };
+		ACAFA7672D17EA2200325B02 /* DefaultProfileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultProfileRepository.swift; sourceTree = "<group>"; };
+		ACAFA7692D17EA7500325B02 /* ProfileRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRemoteDataSource.swift; sourceTree = "<group>"; };
+		ACAFA76B2D17F26D00325B02 /* DataState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataState.swift; sourceTree = "<group>"; };
+		ACAFA76E2D17FCCE00325B02 /* View+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Ext.swift"; sourceTree = "<group>"; };
+		ACAFA7702D17FE2700325B02 /* Collection+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,9 +86,141 @@
 			path = Plist;
 			sourceTree = "<group>";
 		};
+		AC10A02F2D17052400B0EB41 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				AC10A0382D17163E00B0EB41 /* Enum */,
+				AC10A0432D171D6C00B0EB41 /* Repositories */,
+				AC10A0392D17166600B0EB41 /* Responses */,
+				AC10A03B2D17169300B0EB41 /* UsaCases */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		AC10A0302D17052D00B0EB41 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				AC10A03C2D17169D00B0EB41 /* Repository */,
+				AC10A03A2D17167500B0EB41 /* DataSources */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		AC10A0312D17054800B0EB41 /* Dependency */ = {
+			isa = PBXGroup;
+			children = (
+				ACAFA75C2D17CF2500325B02 /* ModuleAssembler.swift */,
+				ACAFA75E2D17CFF700325B02 /* ProfileAssembler.swift */,
+			);
+			path = Dependency;
+			sourceTree = "<group>";
+		};
+		AC10A0322D1706AC00B0EB41 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				AC10A0332D170A4F00B0EB41 /* Profile */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		AC10A0332D170A4F00B0EB41 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				ACAFA7602D17D35800325B02 /* Navigator */,
+				AC10A0352D170A5E00B0EB41 /* View */,
+				AC10A0342D170A5600B0EB41 /* ViewModel */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		AC10A0342D170A5600B0EB41 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				AC10A0442D171DB300B0EB41 /* ProfileViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		AC10A0352D170A5E00B0EB41 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				ACA52FB42D1452B0008CB457 /* HomeView.swift */,
+				AC10A0362D1715CD00B0EB41 /* ProfileView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AC10A0382D17163E00B0EB41 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				ACAFA76B2D17F26D00325B02 /* DataState.swift */,
+				AC10A03F2D17180100B0EB41 /* GenderEnum.swift */,
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
+		AC10A0392D17166600B0EB41 /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				AC10A0412D17181800B0EB41 /* User.swift */,
+			);
+			path = Responses;
+			sourceTree = "<group>";
+		};
+		AC10A03A2D17167500B0EB41 /* DataSources */ = {
+			isa = PBXGroup;
+			children = (
+				AC10A03D2D17172000B0EB41 /* Local */,
+				AC10A03E2D17172A00B0EB41 /* Remote */,
+			);
+			path = DataSources;
+			sourceTree = "<group>";
+		};
+		AC10A03B2D17169300B0EB41 /* UsaCases */ = {
+			isa = PBXGroup;
+			children = (
+				ACAFA7652D17E8DE00325B02 /* GetUsersUsaCase.swift */,
+			);
+			path = UsaCases;
+			sourceTree = "<group>";
+		};
+		AC10A03C2D17169D00B0EB41 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				ACAFA7672D17EA2200325B02 /* DefaultProfileRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		AC10A03D2D17172000B0EB41 /* Local */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Local;
+			sourceTree = "<group>";
+		};
+		AC10A03E2D17172A00B0EB41 /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+				ACAFA7692D17EA7500325B02 /* ProfileRemoteDataSource.swift */,
+			);
+			path = Remote;
+			sourceTree = "<group>";
+		};
+		AC10A0432D171D6C00B0EB41 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				ACAFA7632D17E7B900325B02 /* ProfileRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
 		ACA52FA62D1452B0008CB457 = {
 			isa = PBXGroup;
 			children = (
+				AC10A0302D17052D00B0EB41 /* Data */,
+				AC10A0312D17054800B0EB41 /* Dependency */,
+				AC10A02F2D17052400B0EB41 /* Domain */,
 				ACA52FB12D1452B0008CB457 /* E-Buddy */,
 				ACA52FB02D1452B0008CB457 /* Products */,
 			);
@@ -77,8 +237,9 @@
 		ACA52FB12D1452B0008CB457 /* E-Buddy */ = {
 			isa = PBXGroup;
 			children = (
+				ACAFA76D2D17FCC000325B02 /* Extension */,
+				AC10A0322D1706AC00B0EB41 /* Features */,
 				ACA52FC22D145833008CB457 /* Resources */,
-				ACA52FB42D1452B0008CB457 /* ContentView.swift */,
 				ACA52FB22D1452B0008CB457 /* E_BuddyApp.swift */,
 				ACA52FB82D1452B0008CB457 /* Preview Content */,
 			);
@@ -100,6 +261,23 @@
 				ACA52FB62D1452B0008CB457 /* Assets.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		ACAFA7602D17D35800325B02 /* Navigator */ = {
+			isa = PBXGroup;
+			children = (
+				ACAFA7612D17D36600325B02 /* ProfileNavigator.swift */,
+			);
+			path = Navigator;
+			sourceTree = "<group>";
+		};
+		ACAFA76D2D17FCC000325B02 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				ACAFA76E2D17FCCE00325B02 /* View+Ext.swift */,
+				ACAFA7702D17FE2700325B02 /* Collection+Ext.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,8 +387,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ACA52FB52D1452B0008CB457 /* ContentView.swift in Sources */,
+				ACAFA75F2D17CFF700325B02 /* ProfileAssembler.swift in Sources */,
+				AC10A0452D171DB300B0EB41 /* ProfileViewModel.swift in Sources */,
+				ACAFA76F2D17FCCE00325B02 /* View+Ext.swift in Sources */,
+				AC10A0422D17181800B0EB41 /* User.swift in Sources */,
+				ACAFA7642D17E7B900325B02 /* ProfileRepository.swift in Sources */,
+				ACAFA76A2D17EA7500325B02 /* ProfileRemoteDataSource.swift in Sources */,
+				ACAFA7622D17D36600325B02 /* ProfileNavigator.swift in Sources */,
+				ACAFA7712D17FE2700325B02 /* Collection+Ext.swift in Sources */,
+				ACAFA75D2D17CF2500325B02 /* ModuleAssembler.swift in Sources */,
+				ACAFA7662D17E8DE00325B02 /* GetUsersUsaCase.swift in Sources */,
+				ACA52FB52D1452B0008CB457 /* HomeView.swift in Sources */,
+				ACAFA76C2D17F26D00325B02 /* DataState.swift in Sources */,
+				AC10A0402D17180100B0EB41 /* GenderEnum.swift in Sources */,
+				AC10A0372D1715CD00B0EB41 /* ProfileView.swift in Sources */,
 				ACA52FB32D1452B0008CB457 /* E_BuddyApp.swift in Sources */,
+				ACAFA7682D17EA2200325B02 /* DefaultProfileRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
