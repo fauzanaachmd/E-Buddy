@@ -7,7 +7,7 @@ on:
 jobs:
     build:
         name: Build default scheme using any available iPhone simulator
-        runs-on: macos-latest
+        runs-on: self-hosted
 
         steps:
             - name: Checkout
