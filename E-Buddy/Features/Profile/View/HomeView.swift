@@ -38,6 +38,10 @@ struct HomeView: View {
                 NavigationLink(destination: navigator.navigateToProfile) {
                     Text("Go To Profile")
                 }
+
+                NavigationLink(destination: navigator.navigateToProfile) {
+                    Text("Go To Login feature")
+                }
             }
             .padding()
         }
