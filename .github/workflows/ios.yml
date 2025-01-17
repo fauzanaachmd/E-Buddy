@@ -18,7 +18,5 @@ jobs:
                 default=$(echo $scheme_list | ruby -e "require 'json'; puts JSON.parse(STDIN.gets)['project']['targets'][0]")
                 echo $default | cat >default
                 echo Using default scheme: $default
-            - name: Clean build the project
-              run: xcodebuild clean
             - name: Build the project
               run: xcodebuild build -scheme "E-Buddy" -sdk iphoneos -destination generic/platform=iOS -allowProvisioningUpdates
